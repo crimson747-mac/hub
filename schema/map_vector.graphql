@@ -1,0 +1,14 @@
+"""벡터 레이어 구현에 필요한 소스 정보"""
+type VectorSource {
+    """벡터 구성에 대한 정보가 담겨있는 URL"""
+    url: URL
+}
+
+"""벡터 레이어"""
+type VectorLayer {
+    """벡터 레이어 구현에 필요한 소스 정보"""
+    source: VectorSource
+
+    """최소 줌 레벨"""
+    minZoom: Int
+}

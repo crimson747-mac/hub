@@ -1,0 +1,34 @@
+"""좌표계를 정의한 스키마"""
+type Projection {
+    """좌표계에 대한 정보"""
+    code: String
+
+    # units: String
+
+    # axisOrientation: String
+
+    """유효한 공간 참조 시스템의 범위에 대한 정보"""
+    extent: [Float]
+}
+
+"""Map 스미카메 포함되며 지도가 어떻게 보여질 것인가를 정의한 스키마"""
+type View {
+    """좌표계에 대한 정보를 가진다"""
+    projection: Projection
+
+    """ View 는 Projection 과 함께 별도의 extent 를 가질 수도 있다."""
+    extent: [Float]
+
+    # """지도초기화시 중심 좌표"""
+    # center: [int]
+
+    # """지도 초기화시 초기 줌 레벨"""
+    # zoom: Int
+
+    # """최소 줌 레벨"""
+    # minZoom: Int
+
+    # """최대 줌 레벨"""
+    # maxZoom: Int
+}
+

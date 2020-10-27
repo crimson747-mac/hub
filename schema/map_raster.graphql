@@ -1,0 +1,36 @@
+"""WMTS, TileWMS: 래스터 레이어를 타일로 나눈 것이다."""
+union TileSource = TileWMS | WMTS
+
+
+"""WMTS를 타일 그리드로 나누기 위한 정보를 가진다"""
+type WMTSTileGrid {
+    """WMTSTileGrid의 extent 는 Projection 의 extent 와 같다."""
+    extent: [Float]
+}
+
+"""래스터 형태의 이미지 타일 정보 1"""
+type WMTS {
+    url: URL!
+    layer: String!
+    matrixSet: String!
+    tileGrid: WMTSTileGrid!
+    projection: Projection!
+}
+
+"""ImageWMS 및 TileWMS에 필요한 params 정보 """
+type Option {
+    LAYERS: String!
+    TILED: Boolean!
+}
+
+"""래스터 형태의 이미지 타일 정보 2"""
+type TileWMS {
+    url: URL!
+    params: Option!
+}
+
+"""래스터 레이어: 이미지 타일 정보를 기반으로 한다 (베이스맵의 레이어 정보)"""
+type TileLayer {
+    source: TileSource!
+    extent: [Float]!
+}
